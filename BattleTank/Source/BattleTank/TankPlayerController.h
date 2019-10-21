@@ -19,4 +19,11 @@ public:
 	ATank* GetControlledTank() const;
 	
 	void BeginPlay() override;
+
+	void Tick(float DeltaTime) override;
+
+private:
+	void AimTowardCrosshair();
+
+	bool GetSightRayHitLocation(FVector& OutHitLocation) const;
 };
