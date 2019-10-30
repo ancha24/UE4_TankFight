@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "BattleTank.h"
 #include "Tank.h"
+#include "BattleTank.h"
 
 // Sets default values
 ATank::ATank()
@@ -15,6 +15,11 @@ ATank::ATank()
 void ATank::SetBarrelRefference(UTankBarrel* BarrelToSet)
 {
 	TankAimingComponent->SetBarrelReference(BarrelToSet);
+}
+
+void ATank::SetTurretRefference(UTankTurret* TurretToSet)
+{
+	TankAimingComponent->SetTurretReference(TurretToSet);
 }
 
 // Called when the game starts or when spawned
@@ -33,4 +38,10 @@ void ATank::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponen
 void ATank::AimAt(FVector HitLocation)
 {
 	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
+}
+
+void ATank::Fire()
+{
+	auto Time = GetWorld()->GetTimeSeconds();
+	UE_LOG(LogTemp, Warning, TEXT("%f: Tank fires"), Time);
 }
