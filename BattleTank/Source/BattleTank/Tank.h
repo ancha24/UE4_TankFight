@@ -4,6 +4,7 @@
 
 #include "TankAimingComponing.h"
 #include "CoreMinimal.h"
+#include "TankMovementComponent.h"
 #include "GameFramework/DefaultPawn.h"
 #include "Tank.generated.h"
 
@@ -33,6 +34,9 @@ protected:
 	// Called when the game starts or when spawned
 	UTankAimingComponing* TankAimingComponent = nullptr;
 
+	UPROPERTY(BlueprintReadOnly)
+	UTankMovementComponent* TankMovementComponent = nullptr;
+
 private:
 	ATank();
 
@@ -49,4 +53,7 @@ private:
 
 	//Local barrel reference for spawning projectile
 	UTankBarrel* Barrel = nullptr;
+
+	float RelaodTimeInSeconds = 3;
+	double LastFireTime = 0;
 };
